@@ -12,7 +12,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', function(req, res){
   res.sendFile(path.join(__dirname, 'TenajerosA1.html'));
 });
+app.get('/about', function(req, res){
+  res.sendFile(path.join(__dirname, 'views/about.html'));
+});
+app.get('*', function(req, res){
+  res.status(404).sendFile(path.join(__dirname, 'views/404.html'));
+});
 //express server listen
 var server = app.listen(app.get('port'), function(){
   console.log('Server listening on port ',app.get('port'));
-});
+})
